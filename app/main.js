@@ -2,6 +2,9 @@
 const $btnCreteNewContato = document.querySelector('#btn-create-new-contato');
 const $contatos           = document.querySelector(".ul-friends-list")
 const $popupCreate        = document.querySelector("#popup-create-contato");
+const $popupShowContato   = document.querySelector(".pop-up-show-contato");
+const $divPopuoShowContato= document.querySelector(".show-contato");
+
 const $btnSaveContato     = document.querySelector("#btn-save-form-create-contato");
 const $btnCancelContato   = document.querySelector("#btn-cancel-form-create-contato");
 //* get value of the inputs from forms of the create new contato
@@ -30,14 +33,14 @@ const contatos = [
     },
     {
         userName:'rebeca ',
-        userId:44,
+        userId:3,
         userNumber:9999,
         userEmail:'rebecaAlves.com',
         userGroups:'family',
     },
     {
         userName:'rebeca ',
-        userId:44,
+        userId:4,
         userNumber:9999,
         userEmail:'rebecaAlves.com',
         userGroups:'family',
@@ -77,20 +80,47 @@ $btnCancelContato.addEventListener('click', (e) => {
 
 
 
+
+
 //* listener show contato
-$contatos.addEventListener('click', (evetn) =>{
-    const eventTarget = evetn.target;
+$contatos.addEventListener('click', (event) =>{
+    const eventTarget = event.target;
     const classOfevent = eventTarget.className === "li-friend-item";
     const img = eventTarget.className === "img-contato";
     const name = eventTarget.className === "contato-name";
+    const dataId = eventTarget.getAttribute("data-js")
+    const found = contatos.find(({userId}) => userId == dataId);
+
     // if(eventTarget.tagName === "LI" || eventTarget.tagName === "P" || eventTarget.tagName === "IMG" ){
     //     console.log(eventTarget)
     // }else{
     //     console.log("isso nao 'e uma li")
     // }
-    if(classOfevent || img || name){
-        console.log("Opa")
-        console.log(eventTarget.parentNode[0]  )
+    if(classOfevent){
+        setValueOfObject(found)
+        ShowPopUp();
+
+    }
+    else if (img){
+       // console.log(eventTarget.parentNode)
+        const getParent = eventTarget.parentNode
+        const dataId = getParent.getAttribute("data-js")
+        console.log(dataId)
+        const found2 = contatos.find(({userId}) => userId == dataId);
+
+        setValueOfObject(found2)
+        ShowPopUp();
+
+    }
+    else if(name){
+        const getParent = eventTarget.parentNode
+        const dataId = getParent.getAttribute("data-js")
+        console.log(dataId)
+        const found2 = contatos.find(({userId}) => userId == dataId);
+
+        setValueOfObject(found2)
+        ShowPopUp();
+
     }
 })
 
@@ -108,7 +138,9 @@ function createNewContato(contName,contId,contNumber,email,group){
 
 
 //* READ
-//function ReadContato()
+const ReadContato = () =>{
+
+}
 
 //* UPDATE
 
@@ -128,7 +160,7 @@ function BuildLiHTMLelement(){
 
         for(let i=0;i< contatos.length;i++){
             $contatos.innerHTML +=  `
-            <li class="li-friend-item" data-js="">
+            <li class="li-friend-item" data-js="${contatos[i].userId}">
                 <img class="img-contato" src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png" alt="">
                 <p class="contato-name">${contatos[i].userName}</p>
             </li>
@@ -147,3 +179,28 @@ function clearInputs(){
     $emailNewContato.innerHTML = '';
     $groupsNewContato.innerHTML = '';
 }
+
+//* function show popups
+const ShowPopUp = () =>{
+    $popupShowContato.style.display = "flex"
+}
+
+//* function gat value of object and set in the show pop-up
+const setValueOfObject = (obj)=>{
+    
+    $divPopuoShowContato.innerHTML = `
+        <div class="show-contato-img">
+         <img src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile.png" alt="" class="img-create-contato">
+         </div>
+             <p class="show-contato-name">${obj.userName}</p>
+         <div class="show-contato-info">
+            <small class="phone-type">Celular</small> <p class="show-contato-number">${obj.userNumber}</p>
+        </div>
+        <div class="show-contato-info">
+            <small class="phone-type">Email</small> <p class="show-contato-number">${obj.userEmail}</p>
+        </div>
+
+        `
+
+}
+
