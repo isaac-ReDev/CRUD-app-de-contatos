@@ -113,6 +113,18 @@
         font-size: 20px;
     }
 
+    /* btn para sair de todso os popup */
+    .exit-pop-up{
+        position: absolute;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        border: 3px solid white;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+    }
+
     /* style od popups */
     .pop-up-create-new-contato{
         position: absolute;
@@ -187,7 +199,45 @@
         font-weight: bolder;
     }
 
+    /* style od popups shoe contato */
+
+    .pop-up-show-contato{
+        position: absolute;
+        display: none;
+        width: 100%;
+        height:100%;
+        background-color: rgb(0, 0, 0);  
+        color: white; 
+    }
+
+    .show-contato{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+        background-color: rgb(82, 78, 78);
+    }
    
+    .show-contato-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 20%;
+        background-color: rgb(108, 108, 115);
+    }
+
+    .show-contato-info{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .phone-type{
+        color: rgb(54, 53, 53);
+        font-size: 15px;
+    }
 
     
     
