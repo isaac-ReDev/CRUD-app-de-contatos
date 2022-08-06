@@ -27,3 +27,9 @@
    PROBLEMA: Destro de cada else if na funcao que abre o popup para mostrar o contato desejado eu tiver q re fazaer a funcao de find do objeto porque eu tive que pegar o valor o data-js do parent node de IMG e do P
   - UPDATE 
   - DELETE
+  -
+  -
+
+
+ - STYLE:
+ -  
