@@ -12,7 +12,7 @@ const $nameNewContato      = document.querySelector("#form-name-new-contato");
 const $phoneNewContato      = document.querySelector("#form-phone-new-contato");
 const $emailNewContato      = document.querySelector("#form-email-new-contato");
 const $groupsNewContato      = document.querySelector("#form-groups-new-contato");
-
+// teste
 
 
 // contatos database
