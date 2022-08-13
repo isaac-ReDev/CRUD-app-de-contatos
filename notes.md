@@ -4,7 +4,7 @@
 
 - ### implementar funcionalaidades de 
   - CREATE 
-  - READ 
+  - READ     
   - UPDATE                          
   - DELETE
 
